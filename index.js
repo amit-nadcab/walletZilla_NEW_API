@@ -7,6 +7,7 @@ const app = express();
 const http = require("http");
 const transactionRouter = require('./Router/transactionRouter')
 const CONTRACT_ABI = require('./walletZillaABI.json')
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 app.use(express.json());
 app.use(cors());

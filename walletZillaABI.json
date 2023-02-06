@@ -52,6 +52,12 @@
             {
                 "indexed": false,
                 "internalType": "uint256",
+                "name": "uiserId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
                 "name": "userRefferdById",
                 "type": "uint256"
             },
@@ -63,6 +69,43 @@
             }
         ],
         "name": "Invest",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "AmtInv",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "userAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "uiserId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "userRefferdById",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "RefByAddress",
+                "type": "address"
+            }
+        ],
+        "name": "RegNewuser",
         "type": "event"
     },
     {
@@ -104,6 +147,12 @@
                 "internalType": "address",
                 "name": "addressOfuser",
                 "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "claimBy",
+                "type": "address"
             }
         ],
         "name": "incentiveShared",
@@ -127,11 +176,36 @@
             {
                 "indexed": false,
                 "internalType": "address",
-                "name": "refealId",
+                "name": "refealaddress",
                 "type": "address"
             }
         ],
         "name": "referalIncome",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "UserAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "incomeType",
+                "type": "string"
+            }
+        ],
+        "name": "royalityIncome",
         "type": "event"
     },
     {
@@ -243,6 +317,60 @@
         "type": "function"
     },
     {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "userAddr",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_managerIncome",
+                "type": "uint256"
+            }
+        ],
+        "name": "SetManagerIncome",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "userAddr",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_seManagerIncome",
+                "type": "uint256"
+            }
+        ],
+        "name": "SetSenManagerIncome",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "userAddr",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_dailyTopFiveReward",
+                "type": "uint256"
+            }
+        ],
+        "name": "SetdailyTopFiveReward",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "inputs": [],
         "name": "TransferAmountToOwnerWallet",
         "outputs": [],
@@ -312,6 +440,35 @@
             {
                 "internalType": "uint256",
                 "name": "totalDeposite",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "UserRoyalityDetail",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "usermanagerIncome",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "userSeniorManagerIncome",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "dailyTopFiveIncome",
                 "type": "uint256"
             }
         ],
@@ -461,6 +618,25 @@
         "type": "function"
     },
     {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "userAddr",
+                "type": "address"
+            }
+        ],
+        "name": "isLastInvestmentActive",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [],
         "name": "owner",
         "outputs": [
@@ -468,25 +644,6 @@
                 "internalType": "address",
                 "name": "",
                 "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "userAddress",
-                "type": "address"
-            }
-        ],
-        "name": "totalTeamBusiness",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
             }
         ],
         "stateMutability": "view",
